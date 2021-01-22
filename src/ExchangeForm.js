@@ -4,7 +4,7 @@ function ExchangeForm(props) {
     const base = 'EUR'
     const [ currencies, setCurrencies ] = useState([])
     const exchange = props.exchange
-    
+
     useEffect(() => {
         async function getCurrencies() {
             const response = await fetch(`https://api.exchangeratesapi.io/latest?base=${base}`)
@@ -30,12 +30,12 @@ function ExchangeForm(props) {
         }
         getCurrencies()
     }, []);
-    
+
     return (
-        <div id="exchangeFomrm">
+        <div id="exchangeForm">
             <p>
                 Convert
-                
+
                 <input
                     type="number"
                     className="border border-secondary rounded-lg"
@@ -59,9 +59,9 @@ function ExchangeForm(props) {
                         ))
                     }
                 </select>
-                
+
                 to
-                
+
                 <select
                     className="border border-secondary rounded-lg bg-white"
                     value={exchange.currencyTo}
@@ -77,7 +77,7 @@ function ExchangeForm(props) {
             </p>
             <p>
                 Exchange Rate:
-                
+
                 <input
                     type="number"
                     className="border border-secondary rounded-lg bg-light"

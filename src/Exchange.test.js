@@ -39,9 +39,6 @@ it('renders exchange calc result with props complete', () => {
 });
 
 it('renders complete all fields message when amount prop is missing', () => {
-  const testRenderer = TestRenderer.create(<Exchange />)
-  const testInstance = testRenderer.root
-
   const props = { exchange: {
                     amount: "",
                     currencyFrom: "USD",
@@ -50,13 +47,14 @@ it('renders complete all fields message when amount prop is missing', () => {
                   }
   }
 
+  const testRenderer = TestRenderer.create(<Exchange {...props}/>)
+  const testInstance = testRenderer.root
+
+  expect(testInstance.props.exchange.amount).toBe("")
   expect(testInstance.findByType('p').findByType('i').props.children).toBe('Please complete all fields')
 });
 
 it('renders complete all fields message when currencyFrom prop is missing', () => {
-  const testRenderer = TestRenderer.create(<Exchange />)
-  const testInstance = testRenderer.root
-
   const props = { exchange: {
                     amount: "100",
                     currencyFrom: "",
@@ -65,13 +63,14 @@ it('renders complete all fields message when currencyFrom prop is missing', () =
                   }
   }
 
+  const testRenderer = TestRenderer.create(<Exchange {...props}/>)
+  const testInstance = testRenderer.root
+
+  expect(testInstance.props.exchange.amount).toBe("100")
   expect(testInstance.findByType('p').findByType('i').props.children).toBe('Please complete all fields')
 });
 
 it('renders complete all fields message when currencyTo prop is missing', () => {
-  const testRenderer = TestRenderer.create(<Exchange />)
-  const testInstance = testRenderer.root
-
   const props = { exchange: {
                     amount: "100",
                     currencyFrom: "USD",
@@ -80,13 +79,14 @@ it('renders complete all fields message when currencyTo prop is missing', () => 
                   }
   }
 
+  const testRenderer = TestRenderer.create(<Exchange {...props}/>)
+  const testInstance = testRenderer.root
+
+  expect(testInstance.props.exchange.amount).toBe("100")
   expect(testInstance.findByType('p').findByType('i').props.children).toBe('Please complete all fields')
 });
 
 it('renders complete all fields message when rate prop is missing', () => {
-  const testRenderer = TestRenderer.create(<Exchange />)
-  const testInstance = testRenderer.root
-
   const props = { exchange: {
                     amount: "100",
                     currencyFrom: "USD",
@@ -95,5 +95,9 @@ it('renders complete all fields message when rate prop is missing', () => {
                   }
   }
 
+  const testRenderer = TestRenderer.create(<Exchange {...props}/>)
+  const testInstance = testRenderer.root
+
+  expect(testInstance.props.exchange.amount).toBe("100")
   expect(testInstance.findByType('p').findByType('i').props.children).toBe('Please complete all fields')
 });
