@@ -1,8 +1,11 @@
-name: Deployment
+name: Test and Deploy
 on:
   push:
     branches:
       - main
+  schedule:
+      - cron: '30 9 * * *'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
